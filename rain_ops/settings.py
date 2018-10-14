@@ -25,7 +25,7 @@ SECRET_KEY = 'bewaspyl9n4i&_+q_hzfrx1tl5+m@pyz6&-ic9gt%pn=3ty&$y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['bfdac717.ngrok.io',]
 
 
 # Application definition
@@ -68,6 +68,27 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'rain_ops.wsgi.application'
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django':  {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+        },
+        'bot': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+        },
+    },
+}
 
 
 # Database
