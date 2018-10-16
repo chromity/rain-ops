@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Rain Ops Web Application</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'data/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'data/css/base.css' %}" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row" id="app-navbar">
+        <div>
+            <img src="{% static 'data/icon.png' %}"
+                    style="height: 72px; padding-left: 8px; margin-top: -36px;"/>
+        </div>
+        <a class="remove-hover-underline" href="{% url 'data:index' %}">
+        <div id="app-navbar-title">
+		<h2 class="app-navbar-text app-navbar-title">Rain Ops</h2>
+		<h3 class="app-navbar-text app-navbar-subtitle">Weather Information Web Application System</h3>
+        </div></a>
+    </div>
+</div>
+<!-- content from templates will be inserted here -->
+<div class="container-fluid">
+    <div id="base-table-container" class="col-md-12">
+        <div class="row" id="table-content" style="width: 80vw; margin-left: 0; margin-top: 20px;">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">DATE & TIME</th>
+                    <th scope="col">IS_RAINING</th>
+                    <th scope="col">WATER_LEVEL</th>
+                    <th scope="col">RAIN AUDIO LEVEL</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for each in data %}
+                    <tr>
+                        <td scope="row">{{ each.time }}</td>
+                        <td>{{ each.is_raining }}</td>
+                        <td>{{ each.water_level }}</td>
+                        <td>{{ each.rain_audio_level }}</td>
+       		    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="{% static '/data/js/jquery-3.3.1.js' %}"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{% static '/data/js/popper.js' %}"></script>
+<script src="{% static '/data/js/bootstrap.min.js' %}"></script>
+<script src="{% static '/data/js/shards.js' %}"></script>
+<script src="{% static '/data/js/base.js' %}"></script>
+</body>
+</html>

@@ -17,7 +17,7 @@ import logging
 
 
 def index(request):
-    data = SensorData.objects.order_by('date_time')
+    data = SensorData.objects.order_by('time')
     return render(request, 'data/index.html', {'data': data})
 
 def load(request):
