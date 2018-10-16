@@ -50,13 +50,12 @@ def load(request):
         else: 
             is_raining = True
 
+        data = None
         data = SensorData()
         data.water_level = water_lvl
         data.rain_audio_level = rain_audio_level
         data.is_raining = is_raining
         data.save()
-
-        GPIO.cleanup()
         
         return HttpResponse(200)
     except:
